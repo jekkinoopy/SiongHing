@@ -33,12 +33,19 @@
 
         /* 導航欄 */
         nav {
-            background-color: white;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 100%);
             padding: 1rem 0;
-            position: sticky;
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: white;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: fixed;
         }
 
         .nav-container {
@@ -51,10 +58,14 @@
         }
 
         .logo {
-
             font-size: 1.8rem;
-            color: var(--primary-color);
+            color: white;
             font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled .logo {
+            color: var(--primary-color);
         }
 
         .nav-links {
@@ -65,18 +76,31 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark-color);
+            color: white;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
+        nav.scrolled .nav-links a {
+            color: var(--dark-color);
+        }
+
         .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        nav.scrolled .nav-links a:hover {
             color: var(--primary-color);
         }
 
         /* 英雄區 */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            /* background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); */
+            background-image: url(image/cozy-colorful-quilt-soft-bedroom-light.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
             color: white;
             padding: 8rem 2rem;
             text-align: center;
@@ -86,8 +110,21 @@
             justify-content: center;
         }
 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
         .hero-content {
             max-width: 600px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -563,10 +600,26 @@
         });
 
         // 表單提交
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('感謝您的訊息！我們將盡快回復您。');
-            this.reset();
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('感謝您的訊息！我們將盡快回復您。');
+                this.reset();
+            });
+        }
+
+        // nav 滾動監聽
+        const nav = document.querySelector('nav');
+        const heroSection = document.querySelector('.hero');
+        
+        window.addEventListener('scroll', function() {
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            if (window.scrollY > heroBottom) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
