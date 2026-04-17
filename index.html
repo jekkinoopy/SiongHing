@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,445 +8,23 @@
     <title>上興棉被行 - 頂級寢具專家</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #7d889e;
-            --secondary-color: #a5c5d4;
-            --accent-color: #b8dce6;
-            --dark-color: #2f3f74;
-            --light-color: #f9f7f4;
-        }
-
-        body {
-            font-family: 'Noto Serif TC', serif;
-            color: var(--dark-color);
-            background-color: var(--light-color);
-            line-height: 1.6;
-        }
-
-        /* 導航欄 */
-        nav {
-            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 100%);
-            padding: 1rem 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            background-color: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: fixed;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            color: white;
-            font-weight: 700;
-            transition: color 0.3s ease;
-        }
-
-        nav.scrolled .logo {
-            color: var(--primary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav.scrolled .nav-links a {
-            color: var(--dark-color);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        nav.scrolled .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* 英雄區 */
-        .hero {
-            /* background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); */
-            background-image: url(image/cozy-colorful-quilt-soft-bedroom-light.jpg);
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            position: relative;
-            color: white;
-            padding: 8rem 2rem;
-            text-align: center;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            z-index: 1;
-        }
-
-        .hero-content {
-            max-width: 600px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .hero-btn {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .hero-btn:hover {
-            background-color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-
-        /* 特色區 */
-        .features {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        /* 產品展示 */
-        .products-section {
-            background-color: var(--accent-color);
-            padding: 4rem 2rem;
-            margin: 3rem 0;
-        }
-
-        .section-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            font-weight: 700;
-        }
-
-        .products-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-        }
-
-        .product-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .product-price {
-            color: var(--secondary-color);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .product-desc {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .add-to-cart {
-            width: 100%;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-
-        .add-to-cart:hover {
-            background-color: var(--secondary-color);
-        }
-
-        /* 關於我們 */
-        .about-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-content h2 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .about-content p {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-        }
-
-        /* 聯絡我們 */
-        .contact-section {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        .contact-section h2 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
-
-        .contact-info {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-item h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .contact-item i {
-            font-size: 0.72rem;
-        }
-
-        .contact-item p {
-            opacity: 0.9;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 2rem auto 0;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 5px;
-            font-family: 'Noto Sans TC', sans-serif;
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 1rem;
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background-color: white;
-        }
-
-        /* 頁腳 */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        /* 響應式設計 */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .about-section {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- 導航欄 -->
     <nav>
         <div class="nav-container">
-            <div class="logo">上興棉被行</div>
+            <div class="logo"><img src="image/上興棉被行橫.svg" alt=""></div>
             <ul class="nav-links">
                 <li><a href="#home">首頁</a></li>
-                <li><a href="#products">產品</a></li>
-                <li><a href="#about">關於</a></li>
+                <li><a href="#products">精選寢具</a></li>
+                <li><a href="#wedding">婚禮用品</a></li>
+                <li><a href="#about">職人傳承</a></li>
                 <li><a href="#contact">聯絡</a></li>
             </ul>
         </div>
@@ -454,9 +33,9 @@
     <!-- 英雄區 -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>享受頂級睡眠體驗</h1>
-            <p>採用天然材料，打造您的夢幻寢室</p>
-            <button class="hero-btn">立即購買</button>
+            <h1><b>上興傳承，最「旺」的溫暖</b></h1>
+            <p><b>一甲子的手打工藝，專屬您的純手工蠶絲被</b></p>
+            <button class="hero-btn"><b>探索職人手作</b></button>
         </div>
     </section>
 
@@ -464,58 +43,58 @@
     <section class="features">
         <div class="feature-card">
             <div class="feature-icon">✨</div>
-            <h3>天然棉質</h3>
-            <p>100% 天然有機棉，柔軟透氣，呵護您的肌膚</p>
+            <h3><b>職人手打蠶絲</b></h3>
+            <p><b>堅持傳統手工拉絲，比機器被更貼身、更透氣</b></p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🌙</div>
-            <h3>舒適睡眠</h3>
-            <p>科學設計，提供最佳支撐力和舒適度</p>
+            <h3><b>傳統婚俗專家</b></h3>
+            <p><b>謝籃、米篩、烘爐瓦片一應俱全，傳承喜氣</b></p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">♻️</div>
-            <h3>永續環保</h3>
-            <p>環保生產製程，守護地球未來</p>
+            <h3><b>舊被翻新服務</b></h3>
+            <p><b>讓長輩留下的愛與溫暖，透過專業工法延續</b></p>
         </div>
     </section>
 
     <!-- 產品展示 -->
     <section class="products-section" id="products">
-        <h2 class="section-title">精選產品</h2>
+        <h2 class="section-title">熱門商品</h2>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-image">🛏️</div>
                 <div class="product-info">
-                    <h3>豪華羽絨被</h3>
-                    <div class="product-price">NT$ 3,980</div>
-                    <p class="product-desc">頂級白鵝羽絨填充，輕盈暖和</p>
-                    <button class="add-to-cart">加入購物車</button>
+                    <h3>招牌手打蠶絲被</h3>
+                    <div class="product-price">NT$ 3,980(依尺寸報價)</div>
+                    <p class="product-desc">冬暖夏涼，純天然長纖維不跑棉</p>
+                    <button class="add-to-cart">查看細節</button>
                 </div>
             </div>
             <div class="product-card">
                 <div class="product-image">☁️</div>
                 <div class="product-info">
-                    <h3>天然棉被</h3>
+                    <h3>純棉手工棉被</h3>
                     <div class="product-price">NT$ 2,480</div>
-                    <p class="product-desc">100% 有機棉，透氣舒適</p>
+                    <p class="product-desc">傳統厚實感，充滿陽光的味道</p>
                     <button class="add-to-cart">加入購物車</button>
                 </div>
             </div>
             <div class="product-card">
                 <div class="product-image">🌿</div>
                 <div class="product-info">
-                    <h3>四季被</h3>
-                    <div class="product-price">NT$ 1,980</div>
-                    <p class="product-desc">輕薄設計，春夏秋冬四季適用</p>
-                    <button class="add-to-cart">加入購物車</button>
+                    <h3>新婚六禮/十二禮組</h3>
+                    <div class="product-price">傳統禮俗專案</div>
+                    <p class="product-desc">含謝籃、米篩、烘爐、瓦片等必備用品</p>
+                    <button class="add-to-cart">線上諮詢</button>
                 </div>
             </div>
             <div class="product-card">
                 <div class="product-image">🎀</div>
                 <div class="product-info">
-                    <h3>兒童卡通被</h3>
+                    <h3>精選床包保潔組</h3>
                     <div class="product-price">NT$ 1,480</div>
-                    <p class="product-desc">可愛設計，安全舒適的小寶貝首選</p>
+                    <p class="product-desc">保護您的珍貴蠶絲被，舒適親肌</p>
                     <button class="add-to-cart">加入購物車</button>
                 </div>
             </div>
@@ -525,54 +104,31 @@
     <!-- 關於我們 -->
     <section class="about-section" id="about">
         <div class="about-content">
-            <h2>關於上興棉被行</h2>
+            <h2>關於上興</h2>
+            <h3>不只是棉被，更是傳承</h3>
             <p>
-                我們致力於提供最優質的寢具產品，擁有超過20年的經驗。
+                「上興」在台語中代表著最興旺的祝福。我們在新莊在地經營多年，始終堅持用雙手打出一條條會呼吸的蠶絲被。
             </p>
             <p>
-                每一件產品都經過嚴格的品質檢驗，確保客戶獲得最舒適的睡眠體驗。
+                每一層蠶絲的堆疊，都是職人對睡眠品質的執著。我們不只賣寢具，更幫無數家庭翻新舊被、籌備婚事。
             </p>
             <p>
-                我們相信好的睡眠是健康生活的基礎，因此我們不遺餘力地研發和改進產品。
+                 「要把客人當成家人，讓大家都能睡個好覺。」——這就是上興的精神。
             </p>
         </div>
-        <div class="about-image">😴</div>
+        <div class="about-image"><img src="image/螢幕擷取畫面 2026-04-17 134638.png" alt=""></div>
     </section>
 
     <!-- 聯絡我們 -->
     <section class="contact-section" id="contact">
-        <h2>聯絡我們</h2>
-        <div class="contact-info">
-            <div class="contact-item">
-                <h3><i class="fas fa-map-marker-alt"></i> 地址</h3>
-                <p>242新北市新莊區新莊路587號</p>
-            </div>
-            <div class="contact-item">
-                <h3><i class="fas fa-phone"></i> 電話</h3>
-                <p>(02) 1234-5678</p>
-            </div>
-            <div class="contact-item">
-                <h3><i class="fas fa-envelope"></i> 電子郵件</h3>
-                <p>service@dreamquilt.com</p>
-            </div>
-        </div>
-        <!-- <div class="contact-form">
-            <form>
-                <div class="form-group">
-                    <label for="name">姓名</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">電子郵件</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">訊息</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">發送訊息</button>
-            </form>
-        </div> -->
+        <h2>找尋最旺的溫暖</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14459.659830973384!2d121.42519190618894!3d25.036959952991893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a8754ded7879%3A0x4c84a8d70ba1101!2z5LiK6IiI5qOJ6KKr6KGM!5e0!3m2!1szh-TW!2stw!4v1776404700015!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <ul class="contact-info">
+            <li><img src="image/上興棉被行橫.svg" alt=""></li>
+            <li class="contact-item"><span><i class="fas fa-map-marker-alt"></i></span><a href="https://maps.app.goo.gl/7jHGGuCq9rsgyHnv8">242 新北市新莊區新莊路587號(新莊老街內，歡迎親臨體驗手感)</a></li>
+            <li class="contact-item"><span><i class="fas fa-phone"></i></span><a href="">0933-865-148</a></li>
+            <li class="contact-item"><span><i class="fa-brands fa-line"></i></span><a href="">shangxing</a></li>
+        </ul>
     </section>
 
     <!-- 頁腳 -->
@@ -583,7 +139,7 @@
     <script>
         // 平滑滾動
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -594,7 +150,7 @@
 
         // 購物車提示
         document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 alert('感謝您的購買！此為示範網站。');
             });
         });
@@ -602,7 +158,7 @@
         // 表單提交
         const form = document.querySelector('form');
         if (form) {
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
                 alert('感謝您的訊息！我們將盡快回復您。');
                 this.reset();
@@ -612,8 +168,8 @@
         // nav 滾動監聽
         const nav = document.querySelector('nav');
         const heroSection = document.querySelector('.hero');
-        
-        window.addEventListener('scroll', function() {
+
+        window.addEventListener('scroll', function () {
             const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
             if (window.scrollY > heroBottom) {
                 nav.classList.add('scrolled');
@@ -623,4 +179,5 @@
         });
     </script>
 </body>
+
 </html>
