@@ -7,10 +7,15 @@
         font-family: ChironSungHK-Bold-B5pc-H, 'Chiron Sung HK';
         font-size: 839.94px;
         font-weight: 700;
+        fill: currentColor;
       }
 
-      .st1 {
-        fill: #fff;
+      .st1,
+      .st7,
+      .st8,
+      .st9,
+      .st11 {
+        fill: currentColor;
       }
 
       .st2 {
@@ -26,33 +31,17 @@
       }
 
       .st4, .st5, .st6 {
-        stroke: #000;
+        stroke: currentColor;
         stroke-linecap: round;
         stroke-linejoin: round;
-      }
-
-      .st7 {
-        fill: #231f20;
       }
 
       .st5 {
         stroke-width: 26.67px;
       }
 
-      .st8 {
-        fill: #597096;
-      }
-
-      .st9 {
-        fill: #fffaeb;
-      }
-
       .st10 {
         clip-path: url(#clippath);
-      }
-
-      .st11 {
-        fill: #787878;
       }
 
       .st6 {
