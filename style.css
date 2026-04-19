@@ -15,14 +15,13 @@
     --accent-color: #ea9a87;
 
     /* 深色：採用色卡最深接近黑的深焦茶色，用於文字或深色背景 */
-    --dark-color: #0d0302;
+    --dark-color: #621b11;
 
     /* 淺色：維持你指定的米綠色底色，並搭配紋理 */
     --light-color: #F6F8F5;
 
     /* --- 以下為依照色卡新增的完整漸層色系，方便你後續微調使用 --- */
     --color-deep-brown: #190604;
-    --color-maroon: #621b11;
     --color-brick-red: #862617;
     --color-warm-orange: #cf3f23;
     --color-soft-peach: #e47b63;
@@ -63,7 +62,8 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100;
+/* 核心修正 1：設定層級，確保選單在最前面 */
+    z-index: 1000;
     transition: all 0.3s ease;
 }
 
@@ -82,35 +82,16 @@ nav.scrolled {
     align-items: center;
 }
 
-/* .logo {
-    display: flex;
-    align-items: center;
-    color: var(--light-color); 
-    transition: color 0.3s ease;
-}
-
-
-.logo svg {
-    height: 3.5rem !important;
-    width: auto !important;
-    fill: currentColor !important;
-}
-
-
-nav.scrolled .logo {
-    color: var(--primary-color);
-} */
  .logo-icon {
     /* 設定 Logo 的寬高比例，根據你的橫式 Logo 調整 */
     width: 250px; 
     height: 45px;
     
     /* 設定背景顏色（這就是你的 Logo 顏色） */
-    background-color: white; 
+    background-color: var(--light-color); 
     transition: background-color 0.3s ease;
 
     /* 核心技術：使用 mask 將 SVG 當作遮罩 */
-    /* 請確認你的圖片路徑正確，如果 index.html 跟 image 資料夾在同一層，就寫 image/... */
     -webkit-mask: url('image/上興棉被行橫.svg') no-repeat center;
     mask: url('image/上興棉被行橫.svg') no-repeat center;
     
@@ -155,14 +136,18 @@ nav.scrolled .nav-links a:hover {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    height: 100vh;
     position: relative;
     color: var(--light-color);
     padding: 8rem 2rem;
     text-align: center;
     min-height: 600px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* 確保內容不會被 fixed 的 nav 遮到 */
+    padding-top: 300px;
 }
 
 .hero::before {
@@ -315,7 +300,7 @@ nav.scrolled .nav-links a:hover {
 }
 
 .product-desc {
-    color: #666;
+    color: ;
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
@@ -356,7 +341,7 @@ nav.scrolled .nav-links a:hover {
 }
 
 .about-content p {
-    color: #666;
+    color: var(--dark-color);
     margin-bottom: 1rem;
     line-height: 1.8;
 }
