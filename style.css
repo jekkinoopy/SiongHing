@@ -6,7 +6,7 @@
 
 :root {
     /* 主色：採用色卡中段具代表性的磚紅，呼應招牌紅字 */
-    --primary-color: #aa321d;
+    --primary-color: #862617;
 
     /* 次色：採用較淺的珊瑚橘，用於點綴或次要標題 */
     --secondary-color: #de5a3f;
@@ -22,7 +22,7 @@
 
     /* --- 以下為依照色卡新增的完整漸層色系，方便你後續微調使用 --- */
     --color-deep-brown: #190604;
-    --color-brick-red: #862617;
+    
     --color-warm-orange: #cf3f23;
     --color-soft-peach: #e47b63;
 
@@ -181,9 +181,9 @@ nav.scrolled .nav-links a:hover {
 }
 
 .hero-btn {
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-    padding: 1rem 2.5rem;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 0.8rem 1.2rem ;
     border: none;
     border-radius: 50px;
     font-size: 1rem;
@@ -196,9 +196,56 @@ nav.scrolled .nav-links a:hover {
 
 .hero-btn:hover {
     background-color: var(--light-color);
+    color: var(--primary-color);
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
+
+/* 關於我們 */
+.about-section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-content h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.about-content p {
+    color: var(--color-deep-brown);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.about-image {
+    width: 100%;
+    height: 300px;
+    /* background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%); */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
 
 /* 特色區 */
 .features {
@@ -233,6 +280,11 @@ nav.scrolled .nav-links a:hover {
     color: var(--primary-color);
     margin-bottom: 1rem;
     font-size: 1.3rem;
+}
+
+.feature-card p {
+    color: var(--color-deep-brown);
+    font-weight: normal;
 }
 
 /* 產品展示 */
@@ -300,7 +352,7 @@ nav.scrolled .nav-links a:hover {
 }
 
 .product-desc {
-    color: ;
+
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
@@ -321,49 +373,6 @@ nav.scrolled .nav-links a:hover {
     background-color: var(--secondary-color);
 }
 
-/* 關於我們 */
-.about-section {
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.about-content h2 {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 2.2rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-
-.about-content p {
-    color: var(--dark-color);
-    margin-bottom: 1rem;
-    line-height: 1.8;
-}
-
-.about-image {
-    width: 100%;
-    height: 300px;
-    /* background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%); */
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-    overflow: hidden;
-}
-
-.about-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
 
 /* 聯絡我們 */
 .contact-section {
