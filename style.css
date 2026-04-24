@@ -396,14 +396,24 @@ nav.scrolled .nav-links a:hover {
     text-align: center;
 }
 
-.contact-section ul img {
-    height: 5rem;
+.contact-section .logo-icon{
+    width: 300px; 
+    /* height: 35px; */
+    background-color: var(--primary-color); 
+    -webkit-mask: url('image/上興棉被行橫.svg') no-repeat center;
+    mask: url('image/上興棉被行橫.svg') no-repeat center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
 }
 
 .contact-section>iframe {
     flex: 1;
-    min-width: 300px;
+    max-width: 50%;
     height: 300px;
+}
+.contact-info-container{
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-info {
