@@ -212,10 +212,19 @@ nav.scrolled .nav-links a:hover {
     gap: 3rem;
     align-items: center;
 }
+.about-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.about-title h2{
+    margin-bottom: 0;
+
+} 
 
 .about-content h2 {
     font-family: 'Noto Serif TC', serif;
-    font-size: 2.2rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
     font-weight: 700;
@@ -248,7 +257,8 @@ nav.scrolled .nav-links a:hover {
 
 
 /* 特色區 */
-.features {
+
+.feature-grid {
     max-width: 1200px;
     margin: 4rem auto;
     padding: 0 2rem;
@@ -389,7 +399,6 @@ nav.scrolled .nav-links a:hover {
 
 .contact-section h2 {
     font-family: 'Noto Serif TC', serif;
-    font-size: 2.2rem;
     margin-bottom: 2rem;
     font-weight: 700;
     width: 100%;
