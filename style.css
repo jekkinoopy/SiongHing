@@ -22,7 +22,7 @@
 
     /* --- 以下為依照色卡新增的完整漸層色系，方便你後續微調使用 --- */
     --color-deep-brown: #190604;
-    
+
     --color-warm-orange: #cf3f23;
     --color-soft-peach: #e47b63;
 
@@ -62,7 +62,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-/* 核心修正 1：設定層級，確保選單在最前面 */
+    /* 核心修正 1：設定層級，確保選單在最前面 */
     z-index: 1000;
     transition: all 0.3s ease;
 }
@@ -82,19 +82,19 @@ nav.scrolled {
     align-items: center;
 }
 
- .logo-icon {
+.logo-icon {
     /* 設定 Logo 的寬高比例，根據你的橫式 Logo 調整 */
-    width: 250px; 
+    width: 250px;
     height: 45px;
-    
+
     /* 設定背景顏色（這就是你的 Logo 顏色） */
-    background-color: var(--light-color); 
+    background-color: var(--light-color);
     transition: background-color 0.3s ease;
 
     /* 核心技術：使用 mask 將 SVG 當作遮罩 */
     -webkit-mask: url('image/上興棉被行橫.svg') no-repeat center;
     mask: url('image/上興棉被行橫.svg') no-repeat center;
-    
+
     /* 讓遮罩完整覆蓋容器 */
     -webkit-mask-size: contain;
     mask-size: contain;
@@ -104,6 +104,7 @@ nav.scrolled {
 nav.scrolled .logo-icon {
     background-color: var(--primary-color);
 }
+
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -183,7 +184,7 @@ nav.scrolled .nav-links a:hover {
 .hero-btn {
     background-color: var(--primary-color);
     color: var(--light-color);
-    padding: 0.8rem 1.2rem ;
+    padding: 0.8rem 1.2rem;
     border: none;
     border-radius: 50px;
     font-size: 1rem;
@@ -209,25 +210,31 @@ nav.scrolled .nav-links a:hover {
     padding: 0 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
     align-items: center;
 }
+
 .about-title {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
 }
-.about-title h2{
+
+.about-title h2 {
     margin-bottom: 0;
+}
 
-} 
 
-.about-content h2 {
-    font-family: 'Noto Serif TC', serif;
+.about-content {
+    /* width: 80%; */
+}
+
+.about-title h3 {
+    /* font-family: 'Noto Serif TC', serif; */
     color: var(--primary-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 10rem;
     font-weight: 700;
+    font-size: 1.8rem;
 }
 
 .about-content p {
@@ -246,15 +253,69 @@ nav.scrolled .nav-links a:hover {
     justify-content: center;
     font-size: 5rem;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .about-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
 }
 
+.about-image-stack {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    margin: 40px auto;
+}
+
+.about-image-stack img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: blocks;
+}
+
+/* 前方圖片 */
+.img-front {
+    position: absolute;
+    width: 70%;
+    border-radius: 20px;
+    bottom: 70px;
+    left: -30px;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.img-front img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.1);
+    transform-origin: center;
+}
+
+/* 後方圖片 */
+.img-back {
+    border-radius: 20px;
+    overflow: hidden;
+    position: absolute;
+    width: 70%;
+    bottom: 0;
+    left: 40%;
+    z-index: 0;
+}
+
+.img-back img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: left top;
+    transform: scale(1.1);
+    transform-origin: center;
+}
 
 /* 特色區 */
 
@@ -405,10 +466,10 @@ nav.scrolled .nav-links a:hover {
     text-align: center;
 }
 
-.contact-section .logo-icon{
-    width: 300px; 
+.contact-section .logo-icon {
+    width: 300px;
     /* height: 35px; */
-    background-color: var(--primary-color); 
+    background-color: var(--primary-color);
     -webkit-mask: url('image/上興棉被行橫.svg') no-repeat center;
     mask: url('image/上興棉被行橫.svg') no-repeat center;
     -webkit-mask-size: contain;
@@ -420,7 +481,8 @@ nav.scrolled .nav-links a:hover {
     max-width: 50%;
     height: 300px;
 }
-.contact-info-container{
+
+.contact-info-container {
     display: flex;
     flex-direction: column;
 }
