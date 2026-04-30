@@ -288,26 +288,34 @@ nav.scrolled .nav-links a:hover {
 .title-group {
     margin-bottom: 40px;
     /* 職人紅裝飾線 */
+    padding-left: 40px;
+    display: flex;
+    align-items: start;
     border-left: 4px solid var(--primary);
-    padding-left: 20px;
+    position: relative;
 }
 
 .section-title {
     font-size: 3rem;
     letter-spacing: 0.8rem;
     color: var(--primary);
-    margin-bottom: 15px;
-
+    /* margin-bottom: 15px; */
+    margin: 0;
 }
 
 .slogan-v {
     font-size: 1.5rem;
+    /* border-right: 4px solid var(--primary); */
     color: var(--secondary);
-    writing-mode: vertical-rl;
-
     /* 關鍵：文字轉直排 */
+    writing-mode: vertical-lr;
+    /* text-orientation: sideways; */
     /* margin-bottom: 10rem; */
-    font-weight: 700;
+    letter-spacing: 0.2em;
+    padding-top: 10px;
+    margin-left: 15px;
+    margin-top: 50px;
+    font-weight: 500;
 }
 
 .intro-box p {
