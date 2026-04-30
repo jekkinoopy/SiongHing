@@ -5,35 +5,96 @@
 }
 
 :root {
-    /* 主色：採用色卡中段具代表性的磚紅，呼應招牌紅字 */
-    --primary-color: #862617;
+    /* ==============================
+       1. 品牌核心 (Brand Colors)
+       --- 用於代表品牌的關鍵色 ---
+       ============================== */
 
-    /* 次色：採用較淺的珊瑚橘，用於點綴或次要標題 */
-    --secondary-color: #de5a3f;
+    /* 品牌主色：色卡中段磚紅（呼應招牌紅字） */
+    --primary: #862617;
 
-    /* 強調色：採用色卡最淺的粉橘，適合按鈕懸停或淡背景 */
-    --accent-color: #ea9a87;
+    /* 品牌次色：珊瑚橘（用於次要標題） */
+    --secondary: #ab3d27;
 
-    /* 深色：採用色卡最深接近黑的深焦茶色，用於文字或深色背景 */
-    --dark-color: #621b11;
+    /* 品牌強調色：粉橘（用於點綴或互動狀態） */
+    --accent: #b44f36;
 
-    /* 淺色：維持你指定的米綠色底色，並搭配紋理 */
-    --light-color: #F6F8F5;
 
-    /* --- 以下為依照色卡新增的完整漸層色系，方便你後續微調使用 --- */
-    --color-deep-brown: #190604;
+    /* ==============================
+       2. 功能性 (Functional Colors)
+       --- 用於文字、背景、狀態 ---
+       ============================== */
 
-    --color-warm-orange: #cf3f23;
-    --color-soft-peach: #e47b63;
+    /* 文字相關 (Text) */
+    --text: #621b11;
+    /* 預設深焦茶文字 */
+    --text-muted: #8c8c8c;
+    /* 建議新增：次要文字灰色 */
+    --text-white: #ffffff;
+    /* 建議新增：反白文字 */
+
+    /* 背景相關 (Background) */
+    --bg: #F6F8F5;
+    /* 你指定的米綠色底色 */
+    --bg-alt: #ffffff;
+    /* 建議新增：替代白色背景 */
+
+    /* 狀態相關 (State) */
+    --interactive-hover: #ea9a87;
+    /* 強調粉橘，用於按鈕/連結懸停 */
+    --shadow: rgba(0, 0, 0, 0.1);
+    /* 建議統一投影顏色 */
+
+    /* ==============================
+    3. 基礎色板 (Color Palette)
+    --- 命名標準：palette - [抽象名] - [深淺階層] ---
+    ============================== */
+
+    /* [Core / Neutral 系列] - 專案核心色板 (從最深 900 到最淺 100) */
+    /* 用於所有磚紅/焦茶色系，在未來專案可對應其主色系 */
+    --core-900: #190604;
+    /* 最深，接近黑 */
+    --core-800: #621b11;
+    /* (原深焦茶色) */
+    --core-700: #862617;
+    /* (原主磚紅) */
+    --core-600: #de5a3f;
+    /* (原次珊瑚橘) */
+    --core-500: #ea9a87;
+    /* (原強粉橘) */
+    --core-400: #cf3f23;
+    /* (原暖橘色) */
+    --core-300: #e47b63;
+    /* (原柔桃色) */
+
+
+    /* [灰色系列] - 用於通用的灰色邊框、陰影、未強調文字 (建議新增) */
+    /* 灰色在每個專案中都是通用的基礎 */
+    --gray-900: #333333;
+    --gray-700: #666666;
+    --gray-500: #999999;
+    --gray-300: #cccccc;
+    --gray-100: #eeeeee;
+    /* 最淺灰色，用於背景區隔 */
 
     /* 【總開關】修改這裡的 px 數值，整體就會等比例縮放 */
     font-size: 16px;
 }
 
+/* 將此樣式加入到 html 標籤中 */
+html {
+    /* 關鍵：設定捲動時的頂部預留空間 */
+    /* 請測量你導覽列實際的高度 (例如 80px)，將數值填入 */
+    scroll-padding-top: 80px;
+
+    /* 建議同時加上平滑捲動效果，體驗更好 */
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Noto Serif TC', serif;
-    color: var(--dark-color);
-    background-color: var(--light-color);
+    color: var(--text);
+    background-color: var(--bg);
     line-height: 1.6;
 }
 
@@ -68,7 +129,7 @@ nav {
 }
 
 nav.scrolled {
-    background-color: var(--light-color);
+    background-color: var(--bg);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
 }
@@ -88,7 +149,7 @@ nav.scrolled {
     height: 45px;
 
     /* 設定背景顏色（這就是你的 Logo 顏色） */
-    background-color: var(--light-color);
+    background-color: var(--bg);
     transition: background-color 0.3s ease;
 
     /* 核心技術：使用 mask 將 SVG 當作遮罩 */
@@ -102,7 +163,7 @@ nav.scrolled {
 
 /* 當導航欄變白底時 (.scrolled)，我們直接改背景色，Logo 就會變磚紅 */
 nav.scrolled .logo-icon {
-    background-color: var(--primary-color);
+    background-color: var(--primary);
 }
 
 .nav-links {
@@ -113,33 +174,33 @@ nav.scrolled .logo-icon {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--light-color);
+    color: var(--bg);
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 nav.scrolled .nav-links a {
-    color: var(--dark-color);
+    color: var(--text);
 }
 
 .nav-links a:hover {
-    color: var(--accent-color);
+    color: var(--accent);
 }
 
 nav.scrolled .nav-links a:hover {
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 /* 英雄區 */
 .hero {
-    /* background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); */
+    /* background: linear-gradient(135deg, var(--primary) 0%, var(--brand-secondary) 100%); */
     background-image: url(image/s/cozy-colorful-quilt-soft-bedroom-light.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     height: 100vh;
     position: relative;
-    color: var(--light-color);
+    color: var(--bg);
     padding: 8rem 2rem;
     text-align: center;
     min-height: 600px;
@@ -182,8 +243,8 @@ nav.scrolled .nav-links a:hover {
 }
 
 .hero-btn {
-    background-color: var(--primary-color);
-    color: var(--light-color);
+    background-color: var(--primary);
+    color: var(--bg);
     padding: 0.8rem 1.2rem;
     border: none;
     border-radius: 50px;
@@ -196,49 +257,61 @@ nav.scrolled .nav-links a:hover {
 }
 
 .hero-btn:hover {
-    background-color: var(--light-color);
-    color: var(--primary-color);
+    background-color: var(--bg);
+    color: var(--primary);
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 
 /* 關於我們 */
+
+/* 整體容器：左右不對稱佈局 */
 .about-section {
     max-width: 1200px;
     margin: 4rem auto;
     padding: 0 2rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+    grid-template-columns: 1fr 2fr;
+    /* 左側略窄，右側略寬 */
+    gap: 50px;
+    padding: 0 40px;
+    align-items: start;
 }
 
-.about-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+.about-left {
+    position: sticky;
+    top: 100px;
+    align-self: start;
 }
 
-.about-title h2 {
-    margin-bottom: 0;
+.title-group {
+    margin-bottom: 40px;
+    /* 職人紅裝飾線 */
+    border-left: 4px solid var(--primary);
+    padding-left: 20px;
 }
 
+.section-title {
+    font-size: 3rem;
+    letter-spacing: 0.8rem;
+    color: var(--primary);
+    margin-bottom: 15px;
 
-.about-content {
-    /* width: 80%; */
 }
 
-.about-title h3 {
-    /* font-family: 'Noto Serif TC', serif; */
-    color: var(--primary-color);
-    margin-bottom: 10rem;
+.slogan-v {
+    font-size: 1.5rem;
+    color: var(--secondary);
+    writing-mode: vertical-rl;
+
+    /* 關鍵：文字轉直排 */
+    /* margin-bottom: 10rem; */
     font-weight: 700;
-    font-size: 1.8rem;
 }
 
-.about-content p {
-    color: var(--color-deep-brown);
+.intro-box p {
+    color: var(--core-900);
     margin-bottom: 2rem;
     line-height: 1.8;
 }
@@ -246,7 +319,7 @@ nav.scrolled .nav-links a:hover {
 .about-image {
     width: 100%;
     /* height: 300px; */
-    /* background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%); */
+    /* background: linear-gradient(135deg, var(--accent) 0%, var(--brand-secondary) 100%); */
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -329,7 +402,7 @@ nav.scrolled .nav-links a:hover {
 }
 
 .feature-card {
-    background: var(--light-color);
+    background: var(--bg);
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
@@ -348,19 +421,19 @@ nav.scrolled .nav-links a:hover {
 }
 
 .feature-card h3 {
-    color: var(--primary-color);
+    color: var(--primary);
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
 
 .feature-card p {
-    color: var(--color-deep-brown);
+    color: var(--core-800);
     font-weight: normal;
 }
 
 /* 產品展示 */
 .products-section {
-    /* background-color: var(--accent-color); */
+    /* background-color: var(--accent); */
     padding: 4rem 2rem;
     margin: 3rem 0;
 }
@@ -369,7 +442,7 @@ nav.scrolled .nav-links a:hover {
     font-family: 'Noto Serif TC', serif;
     font-size: 2.5rem;
     text-align: center;
-    color: var(--primary-color);
+    color: var(--primary);
     margin-bottom: 3rem;
     font-weight: 700;
 }
@@ -383,7 +456,7 @@ nav.scrolled .nav-links a:hover {
 }
 
 .product-card {
-    background: var(--light-color);
+    background: var(--bg);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -398,7 +471,7 @@ nav.scrolled .nav-links a:hover {
 .product-image {
     width: 100%;
     height: 220px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--brand-secondary) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -410,13 +483,13 @@ nav.scrolled .nav-links a:hover {
 }
 
 .product-info h3 {
-    color: var(--primary-color);
+    color: var(--primary);
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
 }
 
 .product-price {
-    color: var(--secondary-color);
+    color: var(--brand-secondary);
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -430,8 +503,8 @@ nav.scrolled .nav-links a:hover {
 
 .add-to-cart {
     width: 100%;
-    background-color: var(--primary-color);
-    color: var(--light-color);
+    background-color: var(--primary);
+    color: var(--bg);
     padding: 0.8rem;
     border: none;
     border-radius: 5px;
@@ -441,14 +514,14 @@ nav.scrolled .nav-links a:hover {
 }
 
 .add-to-cart:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--brand-secondary);
 }
 
 
 /* 聯絡我們 */
 .contact-section {
-    /* background-color: var(--primary-color); */
-    color: var(--dark-color);
+    /* background-color: var(--primary); */
+    color: var(--text);
     padding: 3rem 2rem;
     margin-top: 3rem;
     display: flex;
@@ -469,7 +542,7 @@ nav.scrolled .nav-links a:hover {
 .contact-section .logo-icon {
     width: 300px;
     /* height: 35px; */
-    background-color: var(--primary-color);
+    background-color: var(--primary);
     -webkit-mask: url('image/上興棉被行橫.svg') no-repeat center;
     mask: url('image/上興棉被行橫.svg') no-repeat center;
     -webkit-mask-size: contain;
@@ -512,7 +585,7 @@ nav.scrolled .nav-links a:hover {
 }
 
 .contact-item span {
-    color: var(--secondary-color);
+    color: var(--brand-secondary);
     margin-right: 0.7rem;
 }
 
@@ -557,8 +630,8 @@ nav.scrolled .nav-links a:hover {
 
 .submit-btn {
     width: 100%;
-    background-color: var(--accent-color);
-    color: var(--primary-color);
+    background-color: var(--accent);
+    color: var(--primary);
     padding: 1rem;
     border: none;
     border-radius: 5px;
@@ -569,13 +642,13 @@ nav.scrolled .nav-links a:hover {
 }
 
 .submit-btn:hover {
-    background-color: var(--light-color);
+    background-color: var(--bg);
 }
 
 /* 頁腳 */
 footer {
-    background-color: var(--dark-color);
-    color: var(--light-color);
+    background-color: var(--text);
+    color: var(--bg);
     text-align: center;
     padding: 2rem;
     margin-top: 3rem;
