@@ -402,11 +402,11 @@ nav.scrolled .nav-links a:hover {
 
 .feature-grid {
     max-width: 1200px;
-    margin: 4rem auto;
+    margin: 0 auto;
     padding: 0 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 30px;
 }
 
 .feature-card {
@@ -423,9 +423,27 @@ nav.scrolled .nav-links a:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
+.feature-desc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--core-800);
+    max-width: 240px;
+    /* 關鍵：設定寬度讓文字形成區塊 */
+    margin: 15px auto 0;
+    text-align: center;
+}
+
 .feature-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+
+    /* 增加裝飾感，解決結構空虛 */
+    .feature-icon i {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+        opacity: 0.8;
+    }
 }
 
 .feature-card h3 {
