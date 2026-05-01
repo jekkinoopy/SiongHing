@@ -453,6 +453,7 @@ nav.scrolled .nav-links a:hover {
 }
 
 .feature-card p {
+    width: 80%;
     color: var(--core-800);
     font-weight: normal;
 }
