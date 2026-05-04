@@ -461,8 +461,9 @@ nav.scrolled .nav-links a:hover {
 /* 產品展示 */
 .products-section {
     /* background-color: var(--accent); */
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
     margin: 3rem 0;
+    background-color: var(--bg);
 }
 
 .section-title {
@@ -478,8 +479,11 @@ nav.scrolled .nav-links a:hover {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+    /* 讓卡片居中，不要強行撐開 */
     gap: 2rem;
+    justify-content: center;
+    align-items: stretch;
 }
 
 .product-card {
@@ -523,9 +527,13 @@ nav.scrolled .nav-links a:hover {
 }
 
 .product-desc {
-
+    line-height: 1.8;
     font-size: 0.9rem;
-    margin-bottom: 1rem;
+    color: var(--core-800);
+    max-width: 220px;
+    /* 關鍵：設定寬度讓文字自動換行，形成精緻的區塊感 */
+    margin: 10px auto 0;
+    text-align: center;
 }
 
 /* 聯絡我們 */
