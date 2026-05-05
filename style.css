@@ -100,6 +100,7 @@ body {
     color: var(--text);
     background-color: var(--bg);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 a {
@@ -174,6 +175,36 @@ nav.scrolled .logo-icon {
     display: flex;
     gap: 2rem;
     list-style: none;
+}
+
+.nav-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-toggle-bar {
+    width: 18px;
+    height: 2px;
+    background-color: var(--bg);
+    border-radius: 999px;
+    transition: all 0.25s ease;
+}
+
+nav.scrolled .nav-toggle {
+    border-color: rgba(134, 38, 23, 0.35);
+}
+
+nav.scrolled .nav-toggle-bar {
+    background-color: var(--primary);
 }
 
 .nav-links a {
@@ -328,6 +359,10 @@ nav.scrolled .nav-links a:hover {
 
 .about-image {
     width: 100%;
+    /* 設定比例，1000以下等比例縮放 */
+    aspect-ratio: 16 / 10;
+    max-height: 420px;
+    /* 大螢幕限制高度，避免過長 */
     /* height: 300px; */
     /* background: linear-gradient(135deg, var(--accent) 0%, var(--brand-secondary) 100%); */
     border-radius: 10px;
@@ -351,6 +386,7 @@ nav.scrolled .nav-links a:hover {
     max-width: 500px;
     height: 400px;
     margin: 40px auto;
+    overflow: hidden;
 }
 
 .about-image-stack img {
@@ -501,12 +537,20 @@ nav.scrolled .nav-links a:hover {
     text-align: right;
     padding-right: 20px;
     border-right: 4px solid var(--primary);
+    border-left: none;
+    /* 確保沒有左邊框干擾 */
+    width: fit-content;
+    margin-left: auto;
+    /* 靠右 */
+    margin-right: 0;
+    /* 確保貼齊網格邊緣 */
 }
 
 #products .section-title {
     text-align: left;
     padding-left: 20px;
     border-left: 4px solid var(--primary);
+    width: fit-content;
 }
 
 .products-grid {
@@ -525,11 +569,16 @@ nav.scrolled .nav-links a:hover {
     transition: all 0.3s ease;
 }
 
-#features .section-title,
 #features .feature-grid {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+#features .section-title {
+    max-width: 1200px;
     padding-left: 2rem;
     padding-right: 2rem;
 }
@@ -555,7 +604,7 @@ nav.scrolled .nav-links a:hover {
 }
 
 .product-info h3 {
-    background-color: var(--accent);
+    background-color: var(--primary);
     color: var(--text-white);
     margin: -1.5rem -1.5rem 1rem;
     font-size: 1.25rem;
@@ -612,6 +661,8 @@ nav.scrolled .nav-links a:hover {
 }
 
 .contact-info-content .logo {
+    display: flex;
+    justify-content: center;
     margin-bottom: 30px;
     border-bottom: 3px solid var(--secondary);
     padding-bottom: 20px;
@@ -654,38 +705,251 @@ footer {
 }
 
 /* 響應式設計 */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.2rem;
+@media (max-width: 1024px) {
+    :root {
+        --section-spacing-y: 5rem;
+        --section-title-gap: 2rem;
     }
 
-    .nav-links {
-        gap: 1rem;
-        font-size: 0.9rem;
+    .nav-container,
+    .about-section,
+    .products-section,
+    .contact-section,
+    #features .section-title,
+    #features .feature-grid {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 
     .about-section {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .about-left {
+        position: static;
+    }
+
+    .about-image-stack {
+        max-width: 520px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-info-container {
+        gap: 2rem;
+    }
+
+    .contact-section .logo-icon {
+        width: 240px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    :root {
+        --section-spacing-y: 4rem;
+        --section-title-gap: 1.5rem;
+    }
+
+    html {
+        scroll-padding-top: 72px;
+    }
+
+    nav {
+        padding: 0.75rem 0;
+    }
+
+    .nav-container {
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .logo-icon {
+        width: 200px;
+        height: 38px;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        right: 0;
+        background-color: var(--bg-alt);
+        border: 1px solid rgba(134, 38, 23, 0.18);
+        border-radius: 12px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
+        padding: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        flex-direction: column;
+        gap: 0;
+        transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.25s ease;
+    }
+
+    nav.nav-open .nav-links {
+        max-height: 320px;
+        opacity: 1;
+        pointer-events: auto;
+        padding: 0.5rem 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        color: var(--text);
+        font-size: 0.95rem;
+        padding: 0.7rem 1rem;
+    }
+
+    .nav-links a:hover {
+        color: var(--primary);
+        background-color: rgba(171, 61, 39, 0.08);
+    }
+
+    nav.nav-open .nav-toggle-bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    nav.nav-open .nav-toggle-bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    nav.nav-open .nav-toggle-bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .hero {
+        background-attachment: scroll;
+        min-height: 520px;
+        padding: 7rem 1.25rem 3rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.05rem;
     }
 
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
+        letter-spacing: 0.18rem;
     }
 
-    #products .section-title {
+    #features .section-title,
+    #products .section-title,
+    #contact .section-title {
+        width: fit-content;
         text-align: left;
         border-right: none;
         padding-right: 0;
-        padding-left: 20px;
+        padding-left: 16px;
         border-left: 4px solid var(--primary);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .title-group {
+        padding-left: 20px;
+        margin-bottom: 1.5rem;
+    }
+
+    .slogan-v {
+        font-size: 1.1rem;
+        margin-top: 24px;
+    }
+
+    .about-image-stack {
+        height: 320px;
+    }
+
+    .about-image {
+        max-height: 280px;
+    }
+
+    .img-front img,
+    .img-back img {
+        height: 240px;
+    }
+
+    .feature-grid,
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .product-info h3 {
+        font-size: 1.15rem;
     }
 
     .contact-info-container {
         flex-direction: column;
     }
 
+    .contact-section iframe {
+        min-height: 300px;
+    }
+
     .contact-section iframe,
     .contact-info-content {
         width: 100%;
+    }
+
+    .contact-info-content {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .nav-toggle {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.65rem;
+    }
+
+    .about-image {
+        max-height: 220px;
+    }
+
+    .feature-card,
+    .product-info {
+        padding: 1.1rem;
+    }
+
+    .product-info h3 {
+        margin: -1.1rem -1.1rem 0.9rem;
+        padding: 0.85rem 1.1rem;
     }
 }

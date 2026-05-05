@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="上興棉被行位於新莊老街，傳承半世紀手工棉被與蠶絲被製作，提供客製化寢具、舊被翻新與傳統婚俗用品。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="新莊棉被店, 手工棉被, 蠶絲被, 舊被翻新, 新莊老街, 婚俗用品">
     <meta property="og:title" content="上興棉被行｜新莊老街手工棉被">
     <meta property="og:description" content="50年職人手工棉被，客製化製作與舊被翻新服務">
@@ -29,7 +29,13 @@
                     <div class="logo-icon"></div>
                 </a>
             </div>
-            <ul class="nav-links">
+            <button class="nav-toggle" type="button" aria-label="切換選單" aria-expanded="false"
+                aria-controls="primary-nav">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <ul class="nav-links" id="primary-nav">
                 <!-- (故事歷史、品牌精神) -->
                 <li><a href="#about">職人傳承</a></li>
                 <!-- (專門介紹蠶絲堆疊、打棉流程，把「工作平台」搬到網頁上) -->
@@ -283,6 +289,30 @@ Q：蠶絲被如何保養？ (分享老闆親自示範的套被技術與清潔�
     </footer>
 
     <script>
+        // 手機漢堡選單
+        const nav = document.querySelector('nav');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', function () {
+            const isOpen = nav.classList.toggle('nav-open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function () {
+                nav.classList.remove('nav-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                nav.classList.remove('nav-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
         // 平滑滾動
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
