@@ -77,6 +77,10 @@
     --gray-100: #eeeeee;
     /* 最淺灰色，用於背景區隔 */
 
+    /* 區塊節奏 */
+    --section-spacing-y: 6rem;
+    --section-title-gap: 2.5rem;
+
     /* 【總開關】修改這裡的 px 數值，整體就會等比例縮放 */
     font-size: 16px;
 }
@@ -269,7 +273,7 @@ nav.scrolled .nav-links a:hover {
 /* 整體容器：左右不對稱佈局 */
 .about-section {
     max-width: 1200px;
-    margin: 6rem auto;
+    margin: var(--section-spacing-y) auto;
     padding: 0 2rem;
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -298,8 +302,7 @@ nav.scrolled .nav-links a:hover {
     font-size: 3rem;
     letter-spacing: 0.8rem;
     color: var(--primary);
-    /* margin-bottom: 15px; */
-    margin: 0;
+    margin: 0 0 var(--section-title-gap);
 }
 
 .slogan-v {
@@ -399,10 +402,12 @@ nav.scrolled .nav-links a:hover {
 
 /* 特色區 */
 
-.features {
-    max-width: 1200px;
-    margin: 6rem auto;
-    padding: 0 2rem;
+#features {
+    width: 100%;
+    max-width: none;
+    margin: var(--section-spacing-y) 0;
+    padding: 2.5rem 0;
+    background: linear-gradient(180deg, rgba(134, 38, 23, 0.05) 0%, rgba(134, 38, 23, 0.02) 100%);
 }
 
 .feature-grid {
@@ -413,17 +418,18 @@ nav.scrolled .nav-links a:hover {
 }
 
 .feature-card {
-    background: var(--bg);
+    background: var(--bg-alt);
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 14px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 22px rgba(134, 38, 23, 0.08);
+    border: 1px solid rgba(134, 38, 23, 0.12);
     transition: all 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 14px 28px rgba(134, 38, 23, 0.14);
 }
 
 .feature-desc {
@@ -444,18 +450,20 @@ nav.scrolled .nav-links a:hover {
 .feature-icon i {
     font-size: 2.5rem;
     color: var(--primary);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     opacity: 0.8;
 }
 
 .feature-card h3 {
     color: var(--primary);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-size: 1.3rem;
 }
 
 .feature-card p {
-    width: 80%;
+    width: 100%;
+    max-width: 260px;
+    margin: 0.75rem auto 0;
     color: var(--core-800);
     font-weight: normal;
 }
@@ -465,7 +473,7 @@ nav.scrolled .nav-links a:hover {
     /* background-color: var(--accent); */
     max-width: 1200px;
     padding: 0 2rem;
-    margin: 6rem auto;
+    margin: var(--section-spacing-y) auto;
 }
 
 .section-title {
@@ -473,25 +481,29 @@ nav.scrolled .nav-links a:hover {
     font-size: 2.5rem;
     text-align: center;
     color: var(--primary);
-    margin-bottom: 3rem;
+    margin-bottom: var(--section-title-gap);
     font-weight: 700;
 }
 
-.features .section-title,
-.products-section .section-title,
-.contact-section .section-title {
+#features .section-title,
+#products .section-title,
+#contact .section-title {
     letter-spacing: 0.25rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: var(--section-title-gap);
 }
 
-.features .section-title,
-.contact-section .section-title {
+.about-section .section-title {
+    margin: 0;
+}
+
+#features .section-title,
+#contact .section-title {
     text-align: right;
     padding-right: 20px;
     border-right: 4px solid var(--primary);
 }
 
-.products-section .section-title {
+#products .section-title {
     text-align: left;
     padding-left: 20px;
     border-left: 4px solid var(--primary);
@@ -505,16 +517,26 @@ nav.scrolled .nav-links a:hover {
 }
 
 .product-card {
-    background: var(--bg);
-    border-radius: 8px;
+    background: var(--bg-alt);
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 24px rgba(134, 38, 23, 0.1);
+    border: 1px solid rgba(171, 61, 39, 0.2);
     transition: all 0.3s ease;
 }
 
+#features .section-title,
+#features .feature-grid {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
 .product-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
 }
 
 .product-image {
@@ -529,34 +551,27 @@ nav.scrolled .nav-links a:hover {
 
 .product-info {
     padding: 1.5rem;
+    background-color: var(--bg-alt);
 }
 
 .product-info h3 {
-    color: var(--primary);
-    margin-bottom: 0.75rem;
+    background-color: var(--accent);
+    color: var(--text-white);
+    margin: -1.5rem -1.5rem 1rem;
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 1.4;
     min-height: 3.5rem;
+    padding: 1rem 1.5rem;
+    text-align: center;
 }
 
-.product-info p {
+
+.product-desc {
     font-size: 0.95rem;
     line-height: 1.8;
     margin-bottom: 0.75rem;
     color: var(--core-800);
-}
-
-.product-price {
-    color: var(--brand-secondary);
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.product-desc {
-    font-size: inherit;
-    margin-bottom: 0.75rem;
 }
 
 /* 聯絡我們 */
@@ -564,7 +579,7 @@ nav.scrolled .nav-links a:hover {
     display: flex;
     flex-direction: column;
     max-width: 1200px;
-    margin: 6rem auto;
+    margin: var(--section-spacing-y) auto;
     padding: 0 2rem;
 }
 
@@ -572,7 +587,7 @@ nav.scrolled .nav-links a:hover {
     display: flex;
     width: 100%;
     gap: 60px;
-    margin: 40px auto 0;
+    margin: 0 auto;
     align-items: stretch;
     /* 讓左右高度一致 */
 }
@@ -657,7 +672,7 @@ footer {
         font-size: 1.8rem;
     }
 
-    .products-section .section-title {
+    #products .section-title {
         text-align: left;
         border-right: none;
         padding-right: 0;
