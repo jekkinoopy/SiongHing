@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="上興棉被行位於新莊老街，傳承半世紀手工棉被與蠶絲被製作，提供客製化寢具、舊被翻新與傳統婚俗用品。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="新莊棉被店, 手工棉被, 蠶絲被, 舊被翻新, 新莊老街, 婚俗用品">
     <meta property="og:title" content="上興棉被行｜新莊老街手工棉被">
     <meta property="og:description" content="50年職人手工棉被，客製化製作與舊被翻新服務">
@@ -29,7 +29,13 @@
                     <div class="logo-icon"></div>
                 </a>
             </div>
-            <ul class="nav-links">
+            <button class="nav-toggle" type="button" aria-label="切換選單" aria-expanded="false"
+                aria-controls="primary-nav">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <ul class="nav-links" id="primary-nav">
                 <!-- (故事歷史、品牌精神) -->
                 <li><a href="#about">職人傳承</a></li>
                 <!-- (專門介紹蠶絲堆疊、打棉流程，把「工作平台」搬到網頁上) -->
@@ -151,21 +157,29 @@
             <div class="product-card">
                 <!-- <div class="product-image">🛏️</div> -->
                 <div class="product-info">
-                    <h3>手打蠶絲被</h3>
+                    <h3>職人手打蠶絲被</h3>
                     <!-- <div class="product-price">NT$ 依尺寸報價</div> -->
                     <!-- <p class="product-desc">冬暖夏涼，純天然長纖維不跑棉</p> -->
                     <!-- <button class="add-to-cart">查看細節</button> -->
-                    <p>冬暖夏涼，純天然長纖維，不悶熱、不跑棉</p>
-                    <p>可依體質客製斤數｜現場手工製作</p>
+                    <p class="product-desc">堅持傳統手工拉絲，多層堆疊比機器更貼身，純天然長纖維不跑棉。</p>
                 </div>
             </div>
             <div class="product-card">
                 <!-- <div class="product-image">☁️</div> -->
                 <div class="product-info">
-                    <h3>純棉手工棉被</h3>
+                    <h3>傳統手工棉被</h3>
                     <!-- <div class="product-price">NT$ 2,480</div> -->
-                    <p class="product-desc">傳統厚實感，充滿陽光的味道</p>
+                    <p class="product-desc">精選天然棉花反覆彈打，充滿陽光味道與紮實包覆感，守護整夜溫暖。</p>
                     <!-- <button class="add-to-cart">加入購物車</button> -->
+                </div>
+            </div>
+            <div class="product-card">
+                <!-- <div class="product-image">🌿</div> -->
+                <div class="product-info">
+                    <h3>四季客製化被褥</h3>
+                    <!-- <div class="product-price">傳統禮俗專案</div> -->
+                    <p class="product-desc">依個人體質需求現場調整重量與斤數，打造專屬於您的睡眠溫度。</p>
+                    <!-- <button class="add-to-cart">線上諮詢</button> -->
                 </div>
             </div>
             <div class="product-card">
@@ -173,8 +187,17 @@
                 <div class="product-info">
                     <h3>新婚六禮/十二禮組</h3>
                     <!-- <div class="product-price">傳統禮俗專案</div> -->
-                    <p class="product-desc">含謝籃、米篩等必備用品</p>
+                    <p class="product-desc">提供謝籃、米篩、烘爐瓦片等全套禮俗備品，為新人傳承百年喜氣。</p>
                     <!-- <button class="add-to-cart">線上諮詢</button> -->
+                </div>
+            </div>
+            <div class="product-card">
+                <!-- <div class="product-image">🎀</div> -->
+                <div class="product-info">
+                    <h3>舊被翻新專案</h3>
+                    <!-- <div class="product-price">NT$ 1,480</div> -->
+                    <p class="product-desc">專業工法重梳舊被，將盛載回憶的舊被賦予新生命，延續長輩的愛。</p>
+                    <!-- <button class="add-to-cart">加入購物車</button> -->
                 </div>
             </div>
             <div class="product-card">
@@ -182,7 +205,33 @@
                 <div class="product-info">
                     <h3>精選床包保潔組</h3>
                     <!-- <div class="product-price">NT$ 1,480</div> -->
-                    <p class="product-desc">保護您的珍貴蠶絲被，舒適親肌</p>
+                    <p class="product-desc">保護珍貴的手工蠶絲與棉被，材質舒適親肌，提升睡眠層次。</p>
+                    <!-- <button class="add-to-cart">加入購物車</button> -->
+                </div>
+            </div>
+            <div class="product-card">
+                <!-- <div class="product-image">🎀</div> -->
+                <div class="product-info">
+                    <h3>天然乳膠/羽絲枕</h3>
+                    <!-- <div class="product-price">NT$ 1,480</div> -->
+                    <p class="product-desc">依照頭頸曲線提供支撐，與手工被完美搭配，享受全方位的放鬆。</p>
+                    <!-- <button class="add-to-cart">加入購物車</button> -->
+                </div>
+            </div>
+            <div class="product-card">
+                <!-- <div class="product-image">🎀</div> -->
+                <div class="product-info">
+                    <h3>職人手工午睡枕</h3>
+                    <!-- <div class="product-price">NT$ 1,480</div> -->
+                    <p class="product-desc">利用製作被褥剩餘的優質料件，打造小巧精緻且支撐力佳的隨身枕。</p>
+                    <!-- <button class="add-to-cart">加入購物車</button> -->
+                </div>
+            </div>
+            <div class="product-card" style="text-align: center;grid-column: 1/-1;background-color: var(--primary);">
+                <!-- <div class="product-image">🎀</div> -->
+                <div class="product-info" style="background-color: inherit;">
+                    <!-- <div class="product-price">NT$ 1,480</div> -->
+                    <p class="product-desc" style="color: var(--bg-alt);">關於斤數挑選或特殊需求，歡迎親臨新莊老街店鋪體驗手工觸感。</p>
                     <!-- <button class="add-to-cart">加入購物車</button> -->
                 </div>
             </div>
@@ -235,11 +284,35 @@ Q：蠶絲被如何保養？ (分享老闆親自示範的套被技術與清潔�
     <footer>
         <small>&copy; 2026 上興棉被行。版權所有。</small>
         <a href="https://jekkinoopy.github.io/Portfolio" target="_blank" style="display: block;">
-            Design by Jekkinoopy Studio
+            <small style="color: var(--bg-alt); font-size: 0.7rem;">Design by Jekkinoopy Studio</small>
         </a>
     </footer>
 
     <script>
+        // 手機漢堡選單
+        const nav = document.querySelector('nav');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', function () {
+            const isOpen = nav.classList.toggle('nav-open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function () {
+                nav.classList.remove('nav-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                nav.classList.remove('nav-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
         // 平滑滾動
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
