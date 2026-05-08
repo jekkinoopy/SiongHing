@@ -506,16 +506,9 @@ nav.scrolled .nav-links a:hover {
 
 /* 產品展示 */
 .products-section {
-    /* background-color: var(--accent); */
-<<<<<<< HEAD
-    padding: 6rem 2rem;
-    margin: 3rem 0;
-    background-color: var(--bg);
-=======
     max-width: 1200px;
     padding: 0 2rem;
     margin: var(--section-spacing-y) auto;
->>>>>>> 7ada413ed8267370d0a6e8c5f4e900c27933e0e9
 }
 
 .section-title {
@@ -538,34 +531,31 @@ nav.scrolled .nav-links a:hover {
     margin: 0;
 }
 
-#features .section-title,
+/* 【更動】僅適用老街尋蹤：區塊本身已有 max-width + padding，標題仍可 fit-content 靠右 */
 #contact .section-title {
     text-align: right;
     padding-right: 20px;
     border-right: 4px solid var(--primary);
     border-left: none;
-    /* 確保沒有左邊框干擾 */
     width: fit-content;
     margin-left: auto;
-    /* 靠右 */
     margin-right: 0;
-    /* 確保貼齊網格邊緣 */
 }
 
 #products .section-title {
+    width: 100%;
+    box-sizing: border-box;
     text-align: left;
     padding-left: 20px;
     border-left: 4px solid var(--primary);
-    width: fit-content;
 }
 
 .products-grid {
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
-    /* 讓卡片居中，不要強行撐開 */
+    /* 【更動】與特色區 .feature-grid 一致：欄位可伸縮填滿容器，左右與標題／區塊內緣對齊 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    justify-content: center;
     align-items: stretch;
 }
 
@@ -586,10 +576,18 @@ nav.scrolled .nav-links a:hover {
     padding-right: 2rem;
 }
 
+/* 【更動】特色服務為全寬背景：標題外殼與 .feature-grid 同色帶對齊（同 max-width + 水平內距），避免標題貼齊視窗邊緣 */
 #features .section-title {
     max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 2rem;
     padding-right: 2rem;
+    box-sizing: border-box;
+    text-align: right;
+    border-right: 4px solid var(--primary);
+    border-left: none;
 }
 
 .product-card:hover {
@@ -626,20 +624,12 @@ nav.scrolled .nav-links a:hover {
 
 
 .product-desc {
-<<<<<<< HEAD
     line-height: 1.8;
     font-size: 0.9rem;
     color: var(--core-800);
     max-width: 220px;
-    /* 關鍵：設定寬度讓文字自動換行，形成精緻的區塊感 */
     margin: 10px auto 0;
     text-align: center;
-=======
-    font-size: 0.95rem;
-    line-height: 1.8;
-    margin-bottom: 0.75rem;
-    color: var(--core-800);
->>>>>>> 7ada413ed8267370d0a6e8c5f4e900c27933e0e9
 }
 
 /* 聯絡我們 */
@@ -872,8 +862,18 @@ footer {
         letter-spacing: 0.18rem;
     }
 
-    #features .section-title,
-    #products .section-title,
+    #products .section-title {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: left;
+        border-right: none;
+        padding-right: 0;
+        padding-left: 16px;
+        border-left: 4px solid var(--primary);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
     #contact .section-title {
         width: fit-content;
         text-align: left;
@@ -883,6 +883,20 @@ footer {
         border-left: 4px solid var(--primary);
         margin-left: 0;
         margin-right: 0;
+    }
+
+    /* 【更動】小螢幕：標題區塊與 .feature-grid 同水平內距，樣式與其他區塊統一為左側裝飾線 */
+    #features .section-title {
+        width: 100%;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+        text-align: left;
+        border-right: none;
+        border-left: 4px solid var(--primary);
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
     }
 
     .title-group {
