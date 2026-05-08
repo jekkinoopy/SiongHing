@@ -360,8 +360,7 @@ nav.scrolled .nav-links a:hover {
 .about-image {
     width: 100%;
     /* 設定比例，1000以下等比例縮放 */
-    aspect-ratio: 16 / 10;
-    max-height: 420px;
+    /* max-height: 420px; */
     /* 大螢幕限制高度，避免過長 */
     /* height: 300px; */
     /* background: linear-gradient(135deg, var(--accent) 0%, var(--brand-secondary) 100%); */
@@ -383,10 +382,11 @@ nav.scrolled .nav-links a:hover {
 .about-image-stack {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 724px;
     height: 400px;
     margin: 40px auto;
     overflow: hidden;
+    border-radius: 20px;
 }
 
 .about-image-stack img {
@@ -399,12 +399,12 @@ nav.scrolled .nav-links a:hover {
 /* 前方圖片 */
 .img-front {
     position: absolute;
-    width: 70%;
-    border-radius: 20px;
+    width: 55%;
     bottom: 70px;
-    left: -30px;
+    left: 0;
     z-index: 0;
     overflow: hidden;
+    border-radius: 20px;
 }
 
 .img-front img {
@@ -418,13 +418,14 @@ nav.scrolled .nav-links a:hover {
 
 /* 後方圖片 */
 .img-back {
-    border-radius: 20px;
     overflow: hidden;
     position: absolute;
-    width: 70%;
+    width: 68%;
     bottom: 0;
-    left: 40%;
+    right: 0;
+    left: auto;
     z-index: 0;
+    border-radius: 20px;
 }
 
 .img-back img {
@@ -432,7 +433,7 @@ nav.scrolled .nav-links a:hover {
     height: 300px;
     object-fit: cover;
     object-position: left top;
-    transform: scale(1.1);
+    transform: scale(1.2);
     transform-origin: center;
 }
 
@@ -444,6 +445,15 @@ nav.scrolled .nav-links a:hover {
     margin: var(--section-spacing-y) 0;
     padding: 2.5rem 0;
     background: linear-gradient(180deg, rgba(134, 38, 23, 0.05) 0%, rgba(134, 38, 23, 0.02) 100%);
+}
+
+/* 【更動】全寬背景區塊內用：與 .products-section 相同的 max-width 與左右內距 */
+.section-inner {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .feature-grid {
@@ -520,6 +530,11 @@ nav.scrolled .nav-links a:hover {
     font-weight: 700;
 }
 
+.about-section .section-title {
+    margin: 0;
+}
+
+/* 三大區塊共用字距與底距 */
 #features .section-title,
 #products .section-title,
 #contact .section-title {
@@ -527,21 +542,19 @@ nav.scrolled .nav-links a:hover {
     margin-bottom: var(--section-title-gap);
 }
 
-.about-section .section-title {
-    margin: 0;
-}
-
-/* 【更動】僅適用老街尋蹤：區塊本身已有 max-width + padding，標題仍可 fit-content 靠右 */
+/* 【更動】恢復左右交錯：特色／老街靠右（右側裝飾線） */
+#features .section-title,
 #contact .section-title {
+    width: fit-content;
     text-align: right;
     padding-right: 20px;
     border-right: 4px solid var(--primary);
     border-left: none;
-    width: fit-content;
     margin-left: auto;
     margin-right: 0;
 }
 
+/* 寢居維持靠左（左側裝飾線） */
 #products .section-title {
     width: 100%;
     box-sizing: border-box;
@@ -568,26 +581,10 @@ nav.scrolled .nav-links a:hover {
     transition: all 0.3s ease;
 }
 
+/* 【更動】特色區卡片網格：水平留白由外包 .section-inner 負責，標題與卡片左緣對齊 */
 #features .feature-grid {
-    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
-
-/* 【更動】特色服務為全寬背景：標題外殼與 .feature-grid 同色帶對齊（同 max-width + 水平內距），避免標題貼齊視窗邊緣 */
-#features .section-title {
-    max-width: 1200px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    box-sizing: border-box;
-    text-align: right;
-    border-right: 4px solid var(--primary);
-    border-left: none;
 }
 
 .product-card:hover {
@@ -724,8 +721,7 @@ footer {
     .about-section,
     .products-section,
     .contact-section,
-    #features .section-title,
-    #features .feature-grid {
+    #features .section-inner {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
@@ -737,6 +733,13 @@ footer {
 
     .about-left {
         position: static;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .about-image {
+        aspect-ratio: 16 / 10;
+
     }
 
     .about-image-stack {
@@ -862,41 +865,23 @@ footer {
         letter-spacing: 0.18rem;
     }
 
+    /* 【更動】手機版：特色區改用 .section-inner，與寢居／聯絡同組水平留白 */
+    .about-section,
+    .products-section,
+    .contact-section,
+    #features .section-inner {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     #products .section-title {
-        width: 100%;
-        box-sizing: border-box;
-        text-align: left;
-        border-right: none;
-        padding-right: 0;
         padding-left: 16px;
-        border-left: 4px solid var(--primary);
-        margin-left: 0;
-        margin-right: 0;
     }
 
+    /* 【更動】手機版保留左右交錯，並維持與內容區相同安全距離 */
+    #features .section-title,
     #contact .section-title {
-        width: fit-content;
-        text-align: left;
-        border-right: none;
-        padding-right: 0;
-        padding-left: 16px;
-        border-left: 4px solid var(--primary);
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    /* 【更動】小螢幕：標題區塊與 .feature-grid 同水平內距，樣式與其他區塊統一為左側裝飾線 */
-    #features .section-title {
-        width: 100%;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-        box-sizing: border-box;
-        text-align: left;
-        border-right: none;
-        border-left: 4px solid var(--primary);
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+        padding-right: 16px;
     }
 
     .title-group {
@@ -951,6 +936,16 @@ footer {
 }
 
 @media (max-width: 480px) {
+
+    /* 【更動】超小螢幕收窄水平內距 */
+    .about-section,
+    .products-section,
+    .contact-section,
+    #features .section-inner {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+    }
+
     .nav-links a {
         font-size: 0.9rem;
     }
