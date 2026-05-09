@@ -233,18 +233,27 @@ nav.scrolled .nav-links a:hover {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    height: 100vh;
+    /*
+     * Tablet／iPad Pro 若在這裡用「整視窗高度」（100vh／100dvh），區塊會跟螢幕一樣高，
+     * 視覺上就像「一整屏超高 hero」。改用 clamp：保留呼吸感但不無限拉高。
+     * 順序為舊瀏覽器回退 → svh／dvh 修正行動視窗。
+     */
+    height: auto;
+    min-height: clamp(560px, 74vh, 780px);
+    min-height: clamp(560px, 74svh, 780px);
+    min-height: clamp(560px, 74dvh, 780px);
     position: relative;
     color: var(--bg);
-    padding: 8rem 2rem;
     text-align: center;
-    min-height: 600px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: clamp(4rem, 8vh, 8rem);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* 確保內容不會被 fixed 的 nav 遮到 */
-    padding-top: 300px;
+    /* 頂部留 nav 空間：小螯幕自動縮，避免 ipad 仍被 300px 撐得像超長區塊 */
+    padding-top: clamp(120px, 18vh, 280px);
 }
 
 .hero::before {
@@ -459,7 +468,8 @@ nav.scrolled .nav-links a:hover {
 .feature-grid {
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* 固定兩欄：一列兩張卡；手機在 @media (max-width: 768px) 改回 1fr */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 30px;
 }
 
@@ -478,14 +488,15 @@ nav.scrolled .nav-links a:hover {
     box-shadow: 0 14px 28px rgba(134, 38, 23, 0.14);
 }
 
-.feature-desc {
+/* 未刪除 HTML 裡的 p；先前只移除與 .feature-desc 打架的 .feature-card p */
+.feature-card .feature-desc {
     font-size: 0.95rem;
     line-height: 1.8;
     color: var(--core-800);
-    max-width: 240px;
-    /* 關鍵：設定寬度讓文字形成區塊 */
-    margin: 15px auto 0;
-    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0.85rem 0 0;
+    text-align: left;
 }
 
 .feature-icon {
@@ -506,13 +517,6 @@ nav.scrolled .nav-links a:hover {
     font-size: 1.3rem;
 }
 
-.feature-card p {
-    width: 100%;
-    max-width: 260px;
-    margin: 0.75rem auto 0;
-    color: var(--core-800);
-    font-weight: normal;
-}
 
 /* 產品展示 */
 .products-section {
@@ -848,7 +852,9 @@ footer {
 
     .hero {
         background-attachment: scroll;
-        min-height: 520px;
+        /* 仍以略小高度保底，並用 svh／dvh 貼齊真正可視區高度 */
+        min-height: max(520px, 100svh);
+        min-height: max(520px, 100dvh);
         padding: 7rem 1.25rem 3rem;
     }
 
