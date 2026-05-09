@@ -520,7 +520,8 @@ nav.scrolled .nav-links a:hover {
 
 /* 產品展示 */
 .products-section {
-    max-width: 1200px;
+    /* 稍寬於 1200，讓 4 欄時每張卡內文字區多一點橫向空間（約 style.css 同檔與 grid gap 一起看） */
+    max-width: 1280px;
     padding: 0 2rem;
     margin: var(--section-spacing-y) auto;
 }
@@ -570,10 +571,25 @@ nav.scrolled .nav-links a:hover {
 .products-grid {
     margin: 0 auto;
     display: grid;
-    /* 【更動】與特色區 .feature-grid 一致：欄位可伸縮填滿容器，左右與標題／區塊內緣對齊 */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    /* 桌機：4+4+1（最後一排整列橫幅） */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
     align-items: stretch;
+}
+
+.products-grid .product-card--full {
+    grid-column: 1 / -1;
+    text-align: center;
+    background-color: var(--primary);
+}
+
+.products-grid .product-info--cta {
+    background-color: inherit;
+}
+
+.products-grid .product-desc--cta {
+    color: var(--bg-alt);
+    margin-bottom: 0;
 }
 
 .product-card {
@@ -607,19 +623,20 @@ nav.scrolled .nav-links a:hover {
 }
 
 .product-info {
-    padding: 1.5rem;
+    /* 左右略小於上下，多留給中文內文寬度 */
+    padding: 1.5rem 1.125rem;
     background-color: var(--bg-alt);
 }
 
 .product-info h3 {
     background-color: var(--primary);
     color: var(--text-white);
-    margin: -1.5rem -1.5rem 1rem;
+    margin: -1.5rem -1.125rem 1rem;
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 1.4;
     min-height: 3.5rem;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.125rem;
     text-align: center;
 }
 
@@ -628,9 +645,14 @@ nav.scrolled .nav-links a:hover {
     line-height: 1.8;
     font-size: 0.9rem;
     color: var(--core-800);
-    max-width: 220px;
-    margin: 10px auto 0;
-    text-align: center;
+    /* 勿用過窄 max-width，否則中文易在末行剩「孤字」（台灣排版忌諱） */
+    max-width: 100%;
+    width: 100%;
+    margin: 10px 0 0;
+    text-align: left;
+    /* 盡量避開尾行過短；支援度不足時仍靠上面放寬欄寬改善 */
+    line-break: strict;
+    text-wrap: pretty;
 }
 
 /* 聯絡我們 */
