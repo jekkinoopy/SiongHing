@@ -58,14 +58,8 @@
     /* (原深焦茶色) */
     --core-700: #862617;
     /* (原主磚紅) */
-    --core-600: #de5a3f;
-    /* (原次珊瑚橘) */
     --core-500: #ea9a87;
     /* (原強粉橘) */
-    --core-400: #cf3f23;
-    /* (原暖橘色) */
-    --core-300: #e47b63;
-    /* (原柔桃色) */
 
 
     /* [灰色系列] - 用於通用的灰色邊框、陰影、未強調文字 (建議新增) */
@@ -136,7 +130,6 @@ nav {
 nav.scrolled {
     background-color: var(--bg);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    position: fixed;
 }
 
 .nav-container {
@@ -338,12 +331,6 @@ nav.scrolled .nav-links a:hover {
     position: relative;
 }
 
-.section-title {
-    font-size: 3rem;
-    letter-spacing: 0.8rem;
-    color: var(--primary);
-    margin: 0 0 var(--section-title-gap);
-}
 
 .slogan-v {
     font-size: 1.5rem;
@@ -368,18 +355,11 @@ nav.scrolled .nav-links a:hover {
 
 .about-image {
     width: 100%;
-    /* 設定比例，1000以下等比例縮放 */
-    /* max-height: 420px; */
-    /* 大螢幕限制高度，避免過長 */
-    /* height: 300px; */
-    /* background: linear-gradient(135deg, var(--accent) 0%, var(--brand-secondary) 100%); */
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 5rem;
     overflow: hidden;
-    border-radius: 10px;
 }
 
 .about-image img {
@@ -529,10 +509,11 @@ nav.scrolled .nav-links a:hover {
 .section-title {
     font-family: 'Noto Serif TC', serif;
     font-size: 2.5rem;
+    letter-spacing: 0.8rem;
     text-align: center;
     color: var(--primary);
-    margin-bottom: var(--section-title-gap);
     font-weight: 700;
+    margin-bottom: var(--section-title-gap);
 }
 
 .about-section .section-title {
