@@ -38,6 +38,14 @@
     /* 你指定的米綠色底色 */
     --bg-alt: #ffffff;
     /* 建議新增：替代白色背景 */
+    --bg-warm: #FAF5EE;
+    /* 暖米白：特色區與頁腳的大面積底色，取代實心紅塊 */
+    --text-soft: #5b4a45;
+    /* 內文用暖灰褐，比磚紅內文輕 */
+    --line: rgba(134, 38, 23, 0.14);
+    /* 細線與卡片邊框 */
+    --primary-tint: #F6EADF;
+    /* 淡暖橘底：需要被注意、又不能太重的區塊 */
 
     /* 狀態相關 (State) */
     --interactive-hover: #ea9a87;
@@ -327,7 +335,7 @@ nav.scrolled .nav-links a:hover {
     padding-left: 40px;
     display: flex;
     align-items: start;
-    border-left: 4px solid var(--primary);
+    border-left: 3px solid var(--primary);
     position: relative;
 }
 
@@ -348,7 +356,7 @@ nav.scrolled .nav-links a:hover {
 }
 
 .intro-box p {
-    color: var(--core-900);
+    color: var(--text-soft);
     margin-bottom: 2rem;
     line-height: 1.8;
 }
@@ -432,8 +440,8 @@ nav.scrolled .nav-links a:hover {
     width: 100%;
     max-width: none;
     margin: var(--section-spacing-y) 0;
-    padding: 2.5rem 0;
-    background: linear-gradient(180deg, rgba(134, 38, 23, 0.05) 0%, rgba(134, 38, 23, 0.02) 100%);
+    padding: 4rem 0;
+    background: var(--bg-warm);
 }
 
 /* 【更動】全寬背景區塊內用：與 .products-section 相同的 max-width 與左右內距 */
@@ -448,60 +456,64 @@ nav.scrolled .nav-links a:hover {
 .feature-grid {
     margin: 0 auto;
     display: grid;
-    /* 固定兩欄：一列兩張卡；手機在 @media (max-width: 768px) 改回 1fr */
+    /* 固定兩欄：一列兩項；手機在 @media (max-width: 768px) 改回 1fr */
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 30px;
+    column-gap: 4rem;
 }
 
+/* 拿掉卡片外框與陰影，以細線分隔；圖示在左、文字在右 */
 .feature-card {
-    background: var(--bg-alt);
-    padding: 2rem;
-    border-radius: 14px;
-    text-align: center;
-    box-shadow: 0 8px 22px rgba(134, 38, 23, 0.08);
-    border: 1px solid rgba(134, 38, 23, 0.12);
-    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+    column-gap: 1.25rem;
+    align-content: start;
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--line);
 }
 
-.feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 14px 28px rgba(134, 38, 23, 0.14);
-}
-
-/* 未刪除 HTML 裡的 p；先前只移除與 .feature-desc 打架的 .feature-card p */
 .feature-card .feature-desc {
+    grid-column: 2;
     font-size: 0.95rem;
     line-height: 1.8;
-    color: var(--core-800);
-    width: 100%;
-    max-width: 100%;
-    margin: 0.85rem 0 0;
-    text-align: left;
+    color: var(--text-soft);
+    margin: 0;
+    text-wrap: pretty;
 }
 
 .feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    grid-row: 1 / span 2;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    background-color: rgba(134, 38, 23, 0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    background-color: rgba(134, 38, 23, 0.13);
 }
 
 .feature-icon i {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 16px;
-    opacity: 0.8;
+    font-size: 1.2rem;
+    color: var(--secondary);
 }
 
 .feature-card h3 {
+    grid-column: 2;
     color: var(--primary);
-    margin-bottom: 0.75rem;
-    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 
 /* 產品展示 */
 .products-section {
-    /* 稍寬於 1200，讓 4 欄時每張卡內文字區多一點橫向空間（約 style.css 同檔與 grid gap 一起看） */
-    max-width: 1280px;
+    /* 與其他區塊同寬，左右邊緣對齊 */
+    max-width: 1200px;
     padding: 0 2rem;
     margin: var(--section-spacing-y) auto;
 }
@@ -512,7 +524,7 @@ nav.scrolled .nav-links a:hover {
     letter-spacing: 0.8rem;
     text-align: center;
     color: var(--primary);
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: var(--section-title-gap);
 }
 
@@ -534,7 +546,7 @@ nav.scrolled .nav-links a:hover {
     width: fit-content;
     text-align: right;
     padding-right: 20px;
-    border-right: 4px solid var(--primary);
+    border-right: 3px solid var(--primary);
     border-left: none;
     margin-left: auto;
     margin-right: 0;
@@ -546,7 +558,7 @@ nav.scrolled .nav-links a:hover {
     box-sizing: border-box;
     text-align: left;
     padding-left: 20px;
-    border-left: 4px solid var(--primary);
+    border-left: 3px solid var(--primary);
 }
 
 .products-grid {
@@ -554,31 +566,46 @@ nav.scrolled .nav-links a:hover {
     display: grid;
     /* 桌機：4+4+1（最後一排整列橫幅） */
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: 1.25rem;
     align-items: stretch;
 }
 
+/* 收尾句：淡磚紅底加大字，醒目但不用實心紅 */
 .products-grid .product-card--full {
     grid-column: 1 / -1;
-    text-align: center;
-    background-color: var(--primary);
+    background: var(--primary-tint);
+    border: none;
+}
+
+.products-grid .product-card--full:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 .products-grid .product-info--cta {
-    background-color: inherit;
+    background: transparent;
+    padding: 1.75rem 1.5rem;
 }
 
 .products-grid .product-desc--cta {
-    color: var(--bg-alt);
-    margin-bottom: 0;
+    color: var(--primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-wrap: balance;
+    margin: 0;
+}
+
+.product-desc--cta span {
+    display: inline-block;
 }
 
 .product-card {
     background: var(--bg-alt);
-    border-radius: 14px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 10px 24px rgba(134, 38, 23, 0.1);
-    border: 1px solid rgba(171, 61, 39, 0.2);
+    border: 1px solid var(--line);
     transition: all 0.3s ease;
 }
 
@@ -589,8 +616,8 @@ nav.scrolled .nav-links a:hover {
 }
 
 .product-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(134, 38, 23, 0.07);
 }
 
 .product-image {
@@ -604,32 +631,39 @@ nav.scrolled .nav-links a:hover {
 }
 
 .product-info {
-    /* 左右略小於上下，多留給中文內文寬度 */
     padding: 1.5rem 1.125rem;
-    background-color: var(--bg-alt);
 }
 
+/* 標題改為白底磚紅字，拿掉實心紅色標題列 */
 .product-info h3 {
-    background-color: var(--primary);
-    color: var(--text-white);
-    margin: -1.5rem -1.125rem 1rem;
-    font-size: 1.25rem;
-    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.15rem;
+    font-weight: 600;
     line-height: 1.4;
-    min-height: 3.5rem;
-    padding: 1rem 1.125rem;
-    text-align: center;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.product-info h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 1.5rem;
+    height: 1px;
+    background-color: var(--accent);
 }
 
 
 .product-desc {
     line-height: 1.8;
     font-size: 0.9rem;
-    color: var(--core-800);
+    color: var(--text-soft);
     /* 勿用過窄 max-width，否則中文易在末行剩「孤字」（台灣排版忌諱） */
     max-width: 100%;
     width: 100%;
-    margin: 10px 0 0;
+    margin: 0;
     text-align: left;
     /* 盡量避開尾行過短；支援度不足時仍靠上面放寬欄寬改善 */
     line-break: strict;
@@ -648,7 +682,7 @@ nav.scrolled .nav-links a:hover {
 .contact-info-container {
     display: flex;
     width: 100%;
-    gap: 60px;
+    gap: 40px;
     margin: 0 auto;
     align-items: stretch;
     /* 讓左右高度一致 */
@@ -656,18 +690,17 @@ nav.scrolled .nav-links a:hover {
 
 .contact-section iframe {
     flex: 1.5;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px var(--shadow);
+    border-radius: 10px;
     filter: grayscale(0.15) sepia(0.2) contrast(0.9) brightness(1.05);
     /* filter: invert(10%) hue-rotate(360deg) saturate(0.8) sepia(0.2) contrast(0.9) brightness(1.1); */
 }
 
 .contact-info-content {
     flex: 0.8;
-    background-color: var(--bg);
+    background-color: var(--bg-alt);
+    border: 1px solid var(--line);
     padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px var(--shadow);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -677,7 +710,7 @@ nav.scrolled .nav-links a:hover {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-    border-bottom: 3px solid var(--secondary);
+    border-bottom: 1px solid var(--line);
     padding-bottom: 20px;
 }
 
@@ -695,14 +728,15 @@ nav.scrolled .nav-links a:hover {
 }
 
 .contact-item {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     display: flex;
     align-items: flex-start;
+    color: var(--text-soft);
 }
 
 .contact-item i {
     color: var(--secondary);
-    font-size: 0.72rem;
+    font-size: 0.85rem;
     width: 30px;
     text-align: center;
     margin-top: 5px;
@@ -710,11 +744,15 @@ nav.scrolled .nav-links a:hover {
 
 /* 頁腳 */
 footer {
-    background-color: var(--text);
-    color: var(--bg);
+    background-color: var(--bg-warm);
+    color: var(--text-soft);
+    border-top: 1px solid var(--line);
     text-align: center;
     padding: 2rem;
-    margin-top: 3rem;
+}
+
+.footer-credit {
+    font-size: 0.7rem;
 }
 
 /* 響應式設計 */
@@ -916,14 +954,21 @@ footer {
         height: 240px;
     }
 
-    .feature-grid,
-    .products-grid {
+    .feature-grid {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
     }
 
-    .product-info h3 {
-        font-size: 1.15rem;
+    #features {
+        padding: 3rem 0;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .products-grid .product-desc--cta {
+        font-size: 1.1rem;
     }
 
     .contact-info-container {
@@ -980,13 +1025,7 @@ footer {
         max-height: 220px;
     }
 
-    .feature-card,
     .product-info {
         padding: 1.1rem;
-    }
-
-    .product-info h3 {
-        margin: -1.1rem -1.1rem 0.9rem;
-        padding: 0.85rem 1.1rem;
     }
 }
